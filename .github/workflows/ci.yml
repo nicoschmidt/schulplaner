@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  process:
+    name: Process
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Managed files are unchanged
+        run: bash scripts/process/check-kit.sh
+
+      - name: Script syntax
+        run: |
+          failed=0
+          for script in $(git ls-files 'scripts/*.sh' .githooks); do
+            bash -n "$script" || { echo "::error file=$script::bash -n failed"; failed=1; }
+          done
+          exit "$failed"
+
+      - name: Script tests
+        run: |
+          failed=0
+          for test in $(git ls-files 'scripts/*.sh' | grep -E '(^|/)test-[^/]*\.sh$'); do
+            echo "== $test"
+            bash "$test" || { echo "::error file=$test::$test failed"; failed=1; }
+          done
+          exit "$failed"
+
+  # Add the project's own jobs here, and list each one in ci-passed.needs.
+
+  # The one check the main ruleset requires. Every other job is listed in
+  # `needs`, so adding a job never means touching the repository settings.
+  ci-passed:
+    name: CI passed
+    # Without always(), a failed job would skip this one, and a skipped
+    # required check counts as passed.
+    if: always()
+    needs: [process]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every job succeeded
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') || contains(needs.*.result, 'skipped')
+        run: |
+          echo "Not every job succeeded: ${{ join(needs.*.result, ', ') }}"
+          exit 1
+      - run: echo "every job succeeded"
