@@ -72,12 +72,77 @@ erDiagram
   TASK }o--o{ TOPIC : studies
   TASK_SERIES |o--o{ TASK : "generates (006)"
   TASK ||--o{ REMINDER : has
+  SUBJECT {
+    uuid id
+    string name "unique, checked by the package"
+    string colorKey "key of a fixed palette"
+    string symbolName "from a curated list"
+    int sortIndex
+    date createdAt
+  }
+  TASK {
+    uuid id
+    string kind "homework, studySession, other"
+    string title
+    string dueDay "YYYY-MM-DD"
+    date completedAt "optional"
+    date createdAt
+    date scheduledStart "optional, from 003"
+    string occurrenceDay "YYYY-MM-DD, optional, from 006"
+  }
+  LESSON {
+    uuid id
+    int weekday "1 = Monday to 7 = Sunday"
+    int startMinute "minutes after midnight"
+    int endMinute "minutes after midnight"
+    string weekPattern "every, a, b"
+  }
+  CHECK_IN {
+    uuid id
+    string day "YYYY-MM-DD"
+    date completedAt
+  }
+  REMINDER {
+    uuid id
+    int offsetMinutes "before scheduled start or due day"
+    string style "banner, sound"
+  }
+  TOPIC {
+    uuid id
+    string title
+    string notes "optional"
+    date createdAt
+  }
+  TEST {
+    uuid id
+    string kind "classTest, vocabularyTest, other"
+    string title
+    string day "YYYY-MM-DD"
+  }
+  BLOCK {
+    uuid id
+    string kind "testPrep, routine"
+    string title
+    string startDay "YYYY-MM-DD"
+    string endDay "YYYY-MM-DD"
+  }
+  TASK_SERIES {
+    uuid id
+    string rule "recurrence, format set in 006"
+    string templateTitle
+    string untilDay "YYYY-MM-DD, optional"
+  }
 ```
 
-Plus `CheckIn` (002), one per day the student completed the check-in. The
-number in brackets is the iteration that builds the relation; an iteration
-adds only what it uses. Built so far: nothing — `Subject` and `Task` come
-with iteration 001.
+`CheckIn` (002) stands alone: one per day the student completed the
+check-in. The number in brackets is the iteration that builds the relation;
+an iteration adds only what it uses. Built so far: nothing — `Subject` and
+`Task` come with iteration 001.
+
+Types are those of the stored model; `date` is an instant, and days are
+strings in the format given. Lines are SwiftData relationships — there are
+no foreign-key attributes. `id` is a stable identity that never changes, not
+a database key: ADR-0003 rules out unique constraints.
 
 - **One `Task`** for everything to do, with a kind: homework, study session,
   other.
