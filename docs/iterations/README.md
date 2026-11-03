@@ -21,7 +21,7 @@ user's iPhone, used in a real school week.
 | Iteration | Goal in brief | Proves |
 | --- | --- | --- |
 | [000](000-setting-up.md) | Setting up — not an iteration | The process runs end to end |
-| 001 | The student writes down homework per subject, sees what is due when, and ticks it off | The app runs on the first user's iPhone and is opened daily; stack, data model and CI stand |
+| [001](001-homework.md) | The student writes down homework per subject, sees what is due when, and ticks it off | The app runs on the first user's iPhone and is opened daily; stack, data model and CI stand |
 | 002 | After school, the app asks subject by subject for new homework, from the timetable | The low-threshold check-in becomes a habit; notifications work |
 | 003 | For an announced test, the app plans study sessions over the days before and adapts when topics are added — **MVP** | The core problem: preparation starts early, the plan follows the topics |
 | 004 | The student sees on a timeline what was done when, and a burn-down per test | Progress is visible, not just the to-do list |
