@@ -85,5 +85,17 @@ None yet.
 # setup, once per clone
 git config core.hooksPath .githooks
 
-# tests: the command arrives with the Xcode project (iteration 001)
+# build the app and run every test, as CI's job `iOS` does
+bash scripts/build-and-test.sh
+
+# only the domain package's tests, in seconds
+swift test --package-path SchulplanerKit
+
+# CI's other checks, as the job `Process` runs them
+bash scripts/check-kit-imports.sh
+bash scripts/check-signing.sh
+bash scripts/process/check-kit.sh
 ```
+
+CI requires one check, `CI passed`. A new job in `.github/workflows/ci.yml`
+joins that job's `needs` list.

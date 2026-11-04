@@ -1,0 +1,7 @@
+// Your own signing settings. Copy this file to Signing.local.xcconfig, which
+// git ignores, and put in your team ID. It is in Xcode under Settings →
+// Accounts → your Apple Account → the team ("Personal Team" without a paid
+// membership); `security find-certificate -c "Apple Development" -p | openssl
+// x509 -noout -subject` shows it as OU once Xcode has made a certificate.
+
+DEVELOPMENT_TEAM = ABCDE12345

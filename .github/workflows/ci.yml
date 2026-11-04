@@ -35,7 +35,31 @@ jobs:
           done
           exit "$failed"
 
+      - name: SchulplanerKit imports no UI or storage framework
+        run: bash scripts/check-kit-imports.sh
+
+      - name: No personal signing settings
+        run: bash scripts/check-signing.sh
+
   # Add the project's own jobs here, and list each one in ci-passed.needs.
+
+  ios:
+    name: iOS
+    # The image with Xcode 27, a preview on GitHub's side (actions/runner-images#14404).
+    runs-on: xcode-27
+    timeout-minutes: 30
+    env:
+      # The pinned Xcode (ADR-0002): the newest release on the runner. README's
+      # "Development setup" names the same version.
+      DEVELOPER_DIR: /Applications/Xcode_27.1.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Xcode
+        run: xcodebuild -version
+
+      - name: Build and test
+        run: bash scripts/build-and-test.sh
 
   # The one check the main ruleset requires. Every other job is listed in
   # `needs`, so adding a job never means touching the repository settings.
@@ -44,7 +68,7 @@ jobs:
     # Without always(), a failed job would skip this one, and a skipped
     # required check counts as passed.
     if: always()
-    needs: [process]
+    needs: [process, ios]
     runs-on: ubuntu-latest
     steps:
       - name: Every job succeeded

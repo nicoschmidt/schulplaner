@@ -1,0 +1,14 @@
+// Signing, for every target. Committed without a development team: the
+// simulator and CI need none, and a team is personal (hard rule 3 in
+// CLAUDE.md). For an iPhone, each Mac sets its own team in
+// Signing.local.xcconfig beside this file, which git ignores:
+//
+//   cp Config/Signing.local.xcconfig.example Config/Signing.local.xcconfig
+//
+// Never choose the team in Xcode's Signing & Capabilities tab: Xcode writes it
+// into project.pbxproj, and scripts/check-signing.sh fails the build in CI.
+
+CODE_SIGN_STYLE = Automatic
+DEVELOPMENT_TEAM =
+
+#include? "Signing.local.xcconfig"

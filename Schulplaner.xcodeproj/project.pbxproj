@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		62F26A3E4C64D9B4712A696B /* SchulplanerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7F043C4ACB5EA049C3EC7972 /* SchulplanerKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8345295DE4772A9BAC0B0512 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 675C702362D908261D1996FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 353F1EBD9DCE9334214987E1;
+			remoteInfo = Schulplaner;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A8E98B433059EE3D2D7DE59B /* Schulplaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schulplaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15FB36F788F7D2B387C9A94D /* SchulplanerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchulplanerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE8B9C3BC60DED1FB7D53C0E /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
+		F70C635560CACE3CBC444624 /* SchulplanerKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SchulplanerKit; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		14BED5E55DB441A3F50ACA6C /* Schulplaner */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Schulplaner;
+			sourceTree = "<group>";
+		};
+		366309EAA40826478FF33AAB /* SchulplanerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SchulplanerTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE9B8407BDC2EA09A8589480 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62F26A3E4C64D9B4712A696B /* SchulplanerKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5421BA9A6EFCCF3B4D31558A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD8C20F6A4961EF3415A02D8 = {
+			isa = PBXGroup;
+			children = (
+				14BED5E55DB441A3F50ACA6C /* Schulplaner */,
+				366309EAA40826478FF33AAB /* SchulplanerTests */,
+				F70C635560CACE3CBC444624 /* SchulplanerKit */,
+				9720681103F8F011865A3301 /* Config */,
+				E77496C135664186746DF5C1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9720681103F8F011865A3301 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B9C3BC60DED1FB7D53C0E /* Signing.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		E77496C135664186746DF5C1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8E98B433059EE3D2D7DE59B /* Schulplaner.app */,
+				15FB36F788F7D2B387C9A94D /* SchulplanerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		353F1EBD9DCE9334214987E1 /* Schulplaner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37F84FAE62B91D3B8139C03B /* Build configuration list for PBXNativeTarget "Schulplaner" */;
+			buildPhases = (
+				99D0C7EB460DFB3B7D4A233D /* Sources */,
+				EE9B8407BDC2EA09A8589480 /* Frameworks */,
+				94FAFDC4F7A0DCFAB55E8D93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				14BED5E55DB441A3F50ACA6C /* Schulplaner */,
+			);
+			name = Schulplaner;
+			packageProductDependencies = (
+				7F043C4ACB5EA049C3EC7972 /* SchulplanerKit */,
+			);
+			productName = Schulplaner;
+			productReference = A8E98B433059EE3D2D7DE59B /* Schulplaner.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EA69412A2552DF7F86D4A3D5 /* SchulplanerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F30E2B78CF559BA280DE357 /* Build configuration list for PBXNativeTarget "SchulplanerTests" */;
+			buildPhases = (
+				BB8E6A92C147C9A290AC807F /* Sources */,
+				5421BA9A6EFCCF3B4D31558A /* Frameworks */,
+				1D421E2132A730E43C9243C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E34121B6A253A96D412B3F9A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				366309EAA40826478FF33AAB /* SchulplanerTests */,
+			);
+			name = SchulplanerTests;
+			productName = SchulplanerTests;
+			productReference = 15FB36F788F7D2B387C9A94D /* SchulplanerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		675C702362D908261D1996FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2720;
+				LastUpgradeCheck = 2720;
+				TargetAttributes = {
+					353F1EBD9DCE9334214987E1 = {
+						CreatedOnToolsVersion = 27.2;
+					};
+					EA69412A2552DF7F86D4A3D5 = {
+						CreatedOnToolsVersion = 27.2;
+						TestTargetID = 353F1EBD9DCE9334214987E1;
+					};
+				};
+			};
+			buildConfigurationList = 6B5EC9C94AB313BE98410041 /* Build configuration list for PBXProject "Schulplaner" */;
+			developmentRegion = de;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				de,
+				Base,
+			);
+			mainGroup = BD8C20F6A4961EF3415A02D8;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9CC8A93315C08228EF48B3BD /* XCLocalSwiftPackageReference "SchulplanerKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E77496C135664186746DF5C1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				353F1EBD9DCE9334214987E1 /* Schulplaner */,
+				EA69412A2552DF7F86D4A3D5 /* SchulplanerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		94FAFDC4F7A0DCFAB55E8D93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D421E2132A730E43C9243C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99D0C7EB460DFB3B7D4A233D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB8E6A92C147C9A290AC807F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E34121B6A253A96D412B3F9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 353F1EBD9DCE9334214987E1 /* Schulplaner */;
+			targetProxy = 8345295DE4772A9BAC0B0512 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3335FA35E3BC7A96E06483BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE8B9C3BC60DED1FB7D53C0E /* Signing.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F9D3C067AA8854DBA01968B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE8B9C3BC60DED1FB7D53C0E /* Signing.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF2793D263A9A8347D7AAF66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Schulplaner;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.nicoschmidt.schulplaner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		D8BCC9081C597C3E1F52D760 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Schulplaner;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.nicoschmidt.schulplaner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		0EC971929B688A1110E97F4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.nicoschmidt.schulplaner.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Schulplaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Schulplaner";
+			};
+			name = Debug;
+		};
+		2886C2A375949F05174F39EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.nicoschmidt.schulplaner.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Schulplaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Schulplaner";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6B5EC9C94AB313BE98410041 /* Build configuration list for PBXProject "Schulplaner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3335FA35E3BC7A96E06483BC /* Debug */,
+				F9D3C067AA8854DBA01968B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37F84FAE62B91D3B8139C03B /* Build configuration list for PBXNativeTarget "Schulplaner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF2793D263A9A8347D7AAF66 /* Debug */,
+				D8BCC9081C597C3E1F52D760 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F30E2B78CF559BA280DE357 /* Build configuration list for PBXNativeTarget "SchulplanerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EC971929B688A1110E97F4C /* Debug */,
+				2886C2A375949F05174F39EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		9CC8A93315C08228EF48B3BD /* XCLocalSwiftPackageReference "SchulplanerKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = SchulplanerKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7F043C4ACB5EA049C3EC7972 /* SchulplanerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SchulplanerKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 675C702362D908261D1996FC /* Project object */;
+}
