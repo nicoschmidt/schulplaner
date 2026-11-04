@@ -28,14 +28,25 @@ own ADR and an entry on the allowlist that CI checks.
 └──────────────────────────────────┘
 ```
 
-- **App** — the Xcode project. It holds the screens and the SwiftData models,
-  and translates the models into the plain values each rule of the package
-  asks for. Its tests run with `xcodebuild test`.
+- **App** — the Xcode project, `Schulplaner.xcodeproj`, with its sources in
+  `Schulplaner/`. It holds the screens and the SwiftData models, and
+  translates the models into the plain values each rule of the package asks
+  for. Every user-facing text is German and comes from the String Catalog
+  `Localizable.xcstrings`. Its tests, in `SchulplanerTests/`, run with
+  `xcodebuild test`.
 - **SchulplanerKit** — a local Swift package in this repository. It cannot
   see the app; anything that decides a date, an order, a plan or a score lives
   here, as pure functions of plain values, "now" and a calendar, with Swift
   Testing tests that run with `swift test`. It does not import SwiftData
   ([ADR-0004](adr/0004-one-task-entity-days-as-calendar-days-plain-values-for-the-domain-package.md)).
+  CI fails when one of its files imports SwiftUI, UIKit or SwiftData
+  (`scripts/check-kit-imports.sh`).
+
+`scripts/build-and-test.sh` runs both suites, as CI's job `iOS` does, on the
+Xcode version that job pins. Signing is personal and stays out of the
+repository: the development team is set in `Config/Signing.local.xcconfig`,
+which git ignores, and CI fails on a team or profile in a committed file
+(`scripts/check-signing.sh`).
 
 ## Storage
 

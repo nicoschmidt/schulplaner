@@ -8,6 +8,14 @@
 ## User settings
 xcuserdata/
 
+## Build products, and where Xcode puts them when told to build here
+DerivedData/
+build/
+*.xcresult
+
+## Personal signing settings: the team of each Mac (Config/Signing.xcconfig)
+Config/Signing.local.xcconfig
+
 ## Obj-C/Swift specific
 *.hmap
 
@@ -33,6 +41,8 @@ playground.xcworkspace
 # .swiftpm
 
 .build/
+# What Xcode writes when SchulplanerKit is opened on its own
+.swiftpm/
 
 # CocoaPods
 #
