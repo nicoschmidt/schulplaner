@@ -1,15 +1,149 @@
 {
   "sourceLanguage" : "de",
   "strings" : {
-    "Bald trägst du hier deine Hausaufgaben ein." : {
-
+    "%@ entfernen" : {},
+    "%lld Fächer hinzufügen" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Fach hinzufügen"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Fächer hinzufügen"
+                }
+              }
+            }
+          }
+        }
+      }
     },
-    "Hausaufgaben" : {
-
+    "Abbrechen" : {},
+    "Anderes Fach" : {},
+    "Atom" : {},
+    "Bald trägst du hier deine Hausaufgaben ein." : {},
+    "Bearbeiten" : {},
+    "Biologie" : {},
+    "Blatt" : {},
+    "Blau" : {},
+    "Braun" : {},
+    "Buch" : {},
+    "Chemie" : {},
+    "Computer" : {},
+    "Das Fach konnte nicht gesichert werden." : {},
+    "Das Fach „%@“ gibt es schon." : {},
+    "Dazu %lld weitere Aufgaben." : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Dazu %lld weitere Aufgabe."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Dazu %lld weitere Aufgaben."
+                }
+              }
+            }
+          }
+        }
+      }
     },
-    "Noch nichts hier" : {
-
-    }
+    "Deine Fächer" : {},
+    "Deutsch" : {},
+    "Diagramm" : {},
+    "Die Fächer konnten nicht gesichert werden." : {},
+    "Die Änderung konnte nicht gesichert werden." : {},
+    "Eigenes Fach" : {},
+    "Englisch" : {},
+    "Erdkunde" : {},
+    "Ethik" : {},
+    "Fach bearbeiten" : {},
+    "Fach und Aufgaben löschen" : {},
+    "Farbe" : {},
+    "Farbpalette" : {},
+    "Französisch" : {},
+    "Funktion" : {},
+    "Fächer" : {},
+    "Fächer hinzufügen" : {},
+    "Geschichte" : {},
+    "Gib einen Namen ein." : {},
+    "Globus" : {},
+    "Glühbirne" : {},
+    "Grau" : {},
+    "Grün" : {},
+    "Hausaufgaben" : {},
+    "Herz" : {},
+    "Hinzufügen" : {},
+    "Indigo" : {},
+    "Informatik" : {},
+    "Keine Fächer" : {},
+    "Kolben" : {},
+    "Kunst" : {},
+    "Latein" : {},
+    "Laufen" : {},
+    "Lila" : {},
+    "Masken" : {},
+    "Mathematik" : {},
+    "Menschen" : {},
+    "Mit dem Fach werden %lld Hausaufgaben gelöscht." : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mit dem Fach wird %lld Hausaufgabe gelöscht."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mit dem Fach werden %lld Hausaufgaben gelöscht."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Musik" : {},
+    "Name" : {},
+    "Noch keine Hausaufgaben" : {},
+    "Note" : {},
+    "Orange" : {},
+    "Physik" : {},
+    "Pink" : {},
+    "Politik" : {},
+    "Religion" : {},
+    "Rot" : {},
+    "Sanduhr" : {},
+    "Sichern" : {},
+    "Spanisch" : {},
+    "Sport" : {},
+    "Sprechblasen" : {},
+    "Symbol" : {},
+    "Säulen" : {},
+    "Technik" : {},
+    "Türkis" : {},
+    "Vorschläge" : {},
+    "Werkzeug" : {},
+    "Wirtschaft" : {},
+    "Wähle die Fächer, die du hast. Du kannst sie später jederzeit ändern." : {},
+    "Wörterbuch" : {},
+    "„%@“ löschen?" : {}
   },
   "version" : "1.0"
 }

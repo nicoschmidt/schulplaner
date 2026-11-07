@@ -69,6 +69,11 @@ Every stored model is ready for sync from its first version:
   production, changes are add-only
 - tests use in-memory stores
 
+The schema versions, the migration plan and the one place that opens a store
+(`Store.container`) are in `Schulplaner/Storage/`. Rules such as "two subjects
+cannot have the same name" are checked by `SchulplanerKit` before anything is
+saved; the app's `Subjects` applies them to the stored models.
+
 ## Domain model
 
 ([ADR-0004](adr/0004-one-task-entity-days-as-calendar-days-plain-values-for-the-domain-package.md))
@@ -149,8 +154,8 @@ erDiagram
 
 `CheckIn` (002) stands alone: one per day the student completed the
 check-in. The number in brackets is the iteration that builds the relation;
-an iteration adds only what it uses. Built so far: nothing — `Subject` and
-`Task` come with iteration 001.
+an iteration adds only what it uses. Built so far: `Subject` and `Task`, in
+schema version 1 (`Schulplaner/Storage/SchemaV1.swift`).
 
 Types are those of the stored model; `date` is an instant, and days are
 strings in the format given. Lines are SwiftData relationships — there are
