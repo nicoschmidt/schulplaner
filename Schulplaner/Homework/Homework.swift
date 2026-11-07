@@ -1,0 +1,75 @@
+import Foundation
+import SchulplanerKit
+import SwiftData
+import SwiftUI
+
+/// What the screens do with homework: the rules of SchulplanerKit applied to
+/// the stored tasks of kind homework, and every change saved at once.
+@MainActor
+struct Homework {
+    let context: ModelContext
+
+    enum Problem: Error, Equatable {
+        /// Nothing typed: the note is the one thing required.
+        case emptyNote
+    }
+
+    /// The calendar the rules count days in: Gregorian, as the stored days
+    /// are, in the device's time zone.
+    static var calendar: Calendar {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = .current
+        return calendar
+    }
+
+    /// Every piece of homework, soonest due first, then in the order written
+    /// down: for `all()`, and for the list's query.
+    static var allHomework: FetchDescriptor<SchoolTask> {
+        let homework = TaskKind.homework.rawValue
+        return FetchDescriptor(
+            predicate: #Predicate { $0.kind == homework },
+            sortBy: [SortDescriptor(\.dueDay), SortDescriptor(\.createdAt)]
+        )
+    }
+
+    func all() throws -> [SchoolTask] {
+        try context.fetch(Self.allHomework)
+    }
+
+    @discardableResult
+    func add(subject: Subject, note: String, due: CalendarDay, now: Date = .now) throws -> SchoolTask {
+        guard let note = HomeworkNote.normalized(note) else { throw Problem.emptyNote }
+        let task = SchoolTask(kind: TaskKind.homework.rawValue, title: note, dueDay: due.storedValue, subject: subject, createdAt: now)
+        context.insert(task)
+        try context.save()
+        return task
+    }
+
+    func update(_ task: SchoolTask, subject: Subject, note: String, due: CalendarDay) throws {
+        guard let note = HomeworkNote.normalized(note) else { throw Problem.emptyNote }
+        task.subject = subject
+        task.title = note
+        task.dueDay = due.storedValue
+        try context.save()
+    }
+
+    func delete(_ task: SchoolTask) throws {
+        context.delete(task)
+        try context.save()
+    }
+}
+
+extension SchoolTask {
+    /// The due day, as the rules know it. A stored value that is not a day —
+    /// which this app never writes — reads as none.
+    var due: CalendarDay? {
+        CalendarDay(storedValue: dueDay)
+    }
+}
+
+extension EnvironmentValues {
+    /// The screens' way to `Homework`, on the environment's model context.
+    @MainActor var homework: Homework {
+        Homework(context: modelContext)
+    }
+}

@@ -2,6 +2,16 @@
   "sourceLanguage" : "de",
   "strings" : {
     "%@ entfernen" : {},
+    "%@ · %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
     "%lld Fächer hinzufügen" : {
       "localizations" : {
         "de" : {
@@ -27,9 +37,9 @@
     "Abbrechen" : {},
     "Anderes Fach" : {},
     "Atom" : {},
-    "Bald trägst du hier deine Hausaufgaben ein." : {},
     "Bearbeiten" : {},
     "Biologie" : {},
+    "Bis wann?" : {},
     "Blatt" : {},
     "Blau" : {},
     "Braun" : {},
@@ -64,11 +74,14 @@
     "Deutsch" : {},
     "Diagramm" : {},
     "Die Fächer konnten nicht gesichert werden." : {},
+    "Die Hausaufgabe konnte nicht gelöscht werden." : {},
+    "Die Hausaufgabe konnte nicht gesichert werden." : {},
     "Die Änderung konnte nicht gesichert werden." : {},
     "Eigenes Fach" : {},
     "Englisch" : {},
     "Erdkunde" : {},
     "Ethik" : {},
+    "Fach" : {},
     "Fach bearbeiten" : {},
     "Fach und Aufgaben löschen" : {},
     "Farbe" : {},
@@ -77,15 +90,20 @@
     "Funktion" : {},
     "Fächer" : {},
     "Fächer hinzufügen" : {},
+    "Fällig am" : {},
     "Geschichte" : {},
     "Gib einen Namen ein." : {},
     "Globus" : {},
     "Glühbirne" : {},
     "Grau" : {},
     "Grün" : {},
+    "Hausaufgabe" : {},
+    "Hausaufgabe eintragen" : {},
+    "Hausaufgabe löschen" : {},
     "Hausaufgaben" : {},
     "Herz" : {},
     "Hinzufügen" : {},
+    "In einer Woche" : {},
     "Indigo" : {},
     "Informatik" : {},
     "Keine Fächer" : {},
@@ -119,8 +137,10 @@
         }
       }
     },
+    "Morgen" : {},
     "Musik" : {},
     "Name" : {},
+    "Neue Hausaufgabe" : {},
     "Noch keine Hausaufgaben" : {},
     "Note" : {},
     "Orange" : {},
@@ -137,12 +157,16 @@
     "Symbol" : {},
     "Säulen" : {},
     "Technik" : {},
+    "Trag ein, was aufgegeben wurde." : {},
     "Türkis" : {},
     "Vorschläge" : {},
+    "Was ist auf?" : {},
     "Werkzeug" : {},
     "Wirtschaft" : {},
     "Wähle die Fächer, die du hast. Du kannst sie später jederzeit ändern." : {},
     "Wörterbuch" : {},
+    "z. B. S. 42 Nr. 3" : {},
+    "Übermorgen" : {},
     "„%@“ löschen?" : {}
   },
   "version" : "1.0"

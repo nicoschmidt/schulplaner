@@ -6,6 +6,14 @@ struct SchulplanerApp: App {
     private let container: ModelContainer
 
     init() {
+        #if DEBUG
+        // Invented data in memory, to look at the screens; the device's store
+        // stays untouched.
+        if ProcessInfo.processInfo.arguments.contains("-preview-data") {
+            container = Store.preview
+            return
+        }
+        #endif
         do {
             container = try Store.container()
         } catch {
