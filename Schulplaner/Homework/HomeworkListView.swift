@@ -162,7 +162,15 @@ struct HomeworkListView: View {
             .buttonStyle(.borderless)
             .accessibilityLabel(Text("Wieder öffnen"))
 
-            HomeworkRow(task: task, done: true)
+            Button {
+                editing = task
+            } label: {
+                HomeworkRow(task: task, done: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .contentShape(.rect)
+            }
+            .buttonStyle(.plain)
+            .accessibilityHint(Text("Bearbeiten"))
         }
     }
 

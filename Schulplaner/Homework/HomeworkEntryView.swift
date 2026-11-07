@@ -81,8 +81,23 @@ struct HomeworkEntryView: View {
 
             if let editing {
                 Section {
-                    Button("Hausaufgabe löschen", role: .destructive) {
+                    if editing.completedAt == nil {
+                        Button("Als erledigt markieren", systemImage: "checkmark.circle") {
+                            saveAndMark(editing, done: true)
+                        }
+                        .disabled(!canSave)
+                    } else {
+                        Button("Wieder öffnen", systemImage: "arrow.uturn.backward.circle") {
+                            saveAndMark(editing, done: false)
+                        }
+                        .disabled(!canSave)
+                    }
+                    Button("Hausaufgabe löschen", systemImage: "trash", role: .destructive) {
                         attempt { try homework.delete(editing) }
+                    }
+                } footer: {
+                    if let completed = editing.completedAt {
+                        Text("Erledigt am \(completed, format: .dateTime.weekday(.wide).day().month(.wide).hour().minute())")
                     }
                 }
             }
@@ -137,6 +152,20 @@ struct HomeworkEntryView: View {
         }
     }
 
+    /// Saves what was changed in the form, then ticks the homework off or
+    /// back to open, and closes: one tap, like saving.
+    private func saveAndMark(_ task: SchoolTask, done: Bool) {
+        guard let subject, canSave else { return }
+        attempt {
+            try homework.update(task, subject: subject, title: title, notes: notes, due: due)
+            if done {
+                try homework.complete(task, at: .now)
+            } else {
+                try homework.reopen(task)
+            }
+        }
+    }
+
     private func attempt(_ change: () throws -> Void) {
         do {
             try change()
@@ -162,4 +191,15 @@ extension DueDay.QuickChoice {
         HomeworkEntryView()
     }
     .modelContainer(Store.preview)
+}
+
+#Preview("Erledigt") {
+    // Done homework from the preview data, scrolled to the buttons at the end.
+    let container = Store.preview
+    let done = try! Homework(context: container.mainContext).all().first { $0.completedAt != nil }!
+    return NavigationStack {
+        HomeworkEntryView(editing: done)
+            .defaultScrollAnchor(.bottom)
+    }
+    .modelContainer(container)
 }

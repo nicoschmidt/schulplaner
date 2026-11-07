@@ -82,6 +82,28 @@ struct HomeworkBoardTests {
         #expect(old.completedAt == now - 14 * day)
     }
 
+    @Test func doneHomeworkCanBeEditedAndStaysDone() throws {
+        let task = try add("Arbeitsblatt", due: "2026-11-12")
+        try homework.complete(task, at: now)
+
+        try homework.update(task, subject: subject, title: "Arbeitsblatt Brüche", notes: "Rückseite auch", due: CalendarDay(storedValue: "2026-11-12")!)
+
+        #expect(task.completedAt == now)
+        #expect(try board().done.map(\.title) == ["Arbeitsblatt Brüche"])
+    }
+
+    @Test func editedAndThenOpenedAgainFromItsDetails() throws {
+        let task = try add("Arbeitsblatt", due: "2026-11-12")
+        try homework.complete(task, at: now)
+
+        // What the detail view's "Wieder öffnen" does: save, then reopen.
+        try homework.update(task, subject: subject, title: "Arbeitsblatt", notes: "", due: CalendarDay(storedValue: "2026-11-13")!)
+        try homework.reopen(task)
+
+        #expect(task.completedAt == nil)
+        #expect(try board().open.map(\.group) == [.thisWeek])
+    }
+
     @Test func withNothingAtAllTheBoardIsEmpty() throws {
         #expect(try board().isEmpty)
         let task = try add("Arbeitsblatt", due: "2026-11-12")
