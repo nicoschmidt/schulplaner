@@ -22,6 +22,8 @@ usable yet.
 - [Architecture decisions](docs/adr/README.md)
 - [Iterations](docs/iterations/README.md) — the plan up to the first usable
   version
+- [Put the app on an iPhone](docs/install-on-device.md) — with a free Apple
+  Account, renewed every seven days
 
 ## Development setup
 
@@ -57,7 +59,8 @@ builds the project too.
 
    Do not choose the team in Xcode's *Signing & Capabilities* tab: that
    writes it into the project, and CI fails. The simulator needs no team.
-   Installing on an iPhone gets its own guide with #9.
+   Putting the app on an iPhone is in
+   [docs/install-on-device.md](docs/install-on-device.md).
 5. **The repository.** Clone it, then once per clone:
 
    ```bash
