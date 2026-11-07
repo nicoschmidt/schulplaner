@@ -12,7 +12,9 @@ APIs of newer iOS versions are used behind availability checks with a
 fallback. Bundle identifier `io.github.nicoschmidt.schulplaner`.
 
 No dependencies beyond Apple's frameworks; a third-party package needs its
-own ADR and an entry on the allowlist that CI checks.
+own ADR and a line in `allowed-packages.txt`, which is empty. CI resolves the
+packages and fails on one that is not on the list, those a dependency brings
+along included (`scripts/check-packages.sh`).
 
 ## Structure
 

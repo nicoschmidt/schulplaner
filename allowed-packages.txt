@@ -1,0 +1,14 @@
+# The package dependencies the app and SchulplanerKit may resolve, each with
+# the accepted ADR that allows it. Hard rule 1 in CLAUDE.md; ADR-0002 sets the
+# policy: nothing beyond Apple's frameworks without an ADR of its own.
+#
+# One package per line:
+#
+#   <repository URL> ADR-NNNN
+#
+# The URL as Package.resolved records it, its "location"; case and a trailing
+# ".git" do not matter. scripts/check-packages.sh compares every resolved
+# package with this list — packages a dependency brings along included, so
+# each of those needs its line too.
+#
+# Empty: the app uses nothing beyond Apple's frameworks.
