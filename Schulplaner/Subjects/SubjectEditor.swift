@@ -93,11 +93,19 @@ struct SubjectEditor: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Abbrechen") { dismiss() }
+                CancelButton { dismiss() }
             }
             ToolbarItem(placement: .confirmationAction) {
-                Button("Sichern", action: save)
-                    .disabled(problem != nil)
+                // iOS 26 shows a checkmark, which leaves the title room on
+                // small screens with large text.
+                Group {
+                    if #available(iOS 26, *) {
+                        Button(role: .confirm, action: save)
+                    } else {
+                        Button("Sichern", action: save)
+                    }
+                }
+                .disabled(problem != nil)
             }
         }
         .alert("Das Fach konnte nicht gesichert werden.", isPresented: $failed) {}

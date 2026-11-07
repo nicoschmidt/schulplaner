@@ -66,3 +66,16 @@ extension SchulplanerKit.SubjectName.Verdict {
         }
     }
 }
+
+/// Closes a sheet without saving: a cross from iOS 26 on, "Abbrechen" before.
+struct CancelButton: View {
+    let action: () -> Void
+
+    var body: some View {
+        if #available(iOS 26, *) {
+            Button(role: .close, action: action)
+        } else {
+            Button("Abbrechen", action: action)
+        }
+    }
+}
