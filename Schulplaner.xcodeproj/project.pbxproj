@@ -21,8 +21,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A8E98B433059EE3D2D7DE59B /* Schulplaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schulplaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15FB36F788F7D2B387C9A94D /* SchulplanerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchulplanerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8E98B433059EE3D2D7DE59B /* Schulplaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schulplaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8B9C3BC60DED1FB7D53C0E /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
 		F70C635560CACE3CBC444624 /* SchulplanerKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SchulplanerKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,6 +41,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5421BA9A6EFCCF3B4D31558A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EE9B8407BDC2EA09A8589480 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -49,16 +56,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5421BA9A6EFCCF3B4D31558A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9720681103F8F011865A3301 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				AE8B9C3BC60DED1FB7D53C0E /* Signing.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		BD8C20F6A4961EF3415A02D8 = {
 			isa = PBXGroup;
 			children = (
@@ -68,14 +76,6 @@
 				9720681103F8F011865A3301 /* Config */,
 				E77496C135664186746DF5C1 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		9720681103F8F011865A3301 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				AE8B9C3BC60DED1FB7D53C0E /* Signing.xcconfig */,
-			);
-			path = Config;
 			sourceTree = "<group>";
 		};
 		E77496C135664186746DF5C1 /* Products */ = {
@@ -177,14 +177,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		94FAFDC4F7A0DCFAB55E8D93 /* Resources */ = {
+		1D421E2132A730E43C9243C3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1D421E2132A730E43C9243C3 /* Resources */ = {
+		94FAFDC4F7A0DCFAB55E8D93 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -219,6 +219,34 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0EC971929B688A1110E97F4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.nicoschmidt.schulplaner.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Schulplaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Schulplaner";
+			};
+			name = Debug;
+		};
+		2886C2A375949F05174F39EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.nicoschmidt.schulplaner.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Schulplaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Schulplaner";
+			};
+			name = Release;
+		};
 		3335FA35E3BC7A96E06483BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE8B9C3BC60DED1FB7D53C0E /* Signing.xcconfig */;
@@ -227,62 +255,33 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = 1;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				ONLY_ACTIVE_ARCH = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		F9D3C067AA8854DBA01968B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE8B9C3BC60DED1FB7D53C0E /* Signing.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_NO_COMMON_BLOCKS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
 		BF2793D263A9A8347D7AAF66 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -332,46 +331,38 @@
 			};
 			name = Release;
 		};
-		0EC971929B688A1110E97F4C /* Debug */ = {
+		F9D3C067AA8854DBA01968B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE8B9C3BC60DED1FB7D53C0E /* Signing.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.nicoschmidt.schulplaner.tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Schulplaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Schulplaner";
-			};
-			name = Debug;
-		};
-		2886C2A375949F05174F39EB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.nicoschmidt.schulplaner.tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Schulplaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Schulplaner";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6B5EC9C94AB313BE98410041 /* Build configuration list for PBXProject "Schulplaner" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3335FA35E3BC7A96E06483BC /* Debug */,
-				F9D3C067AA8854DBA01968B7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		37F84FAE62B91D3B8139C03B /* Build configuration list for PBXNativeTarget "Schulplaner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -386,6 +377,15 @@
 			buildConfigurations = (
 				0EC971929B688A1110E97F4C /* Debug */,
 				2886C2A375949F05174F39EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B5EC9C94AB313BE98410041 /* Build configuration list for PBXProject "Schulplaner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3335FA35E3BC7A96E06483BC /* Debug */,
+				F9D3C067AA8854DBA01968B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
