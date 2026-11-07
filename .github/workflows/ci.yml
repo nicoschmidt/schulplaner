@@ -58,6 +58,16 @@ jobs:
       - name: Xcode
         run: xcodebuild -version
 
+      # Resolving writes the Package.resolved files the next step reads, also
+      # when they were not committed.
+      - name: Resolve packages
+        run: |
+          xcodebuild -resolvePackageDependencies -project Schulplaner.xcodeproj -scheme Schulplaner
+          swift package resolve --package-path SchulplanerKit
+
+      - name: Every package is allowed by an ADR
+        run: bash scripts/check-packages.sh
+
       - name: Build and test
         run: bash scripts/build-and-test.sh
 

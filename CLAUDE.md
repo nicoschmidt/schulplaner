@@ -39,9 +39,9 @@ it is not built yet. The full picture is in [docs/vision.md](docs/vision.md).
    SDKs. *Why:* the users are minors, the code is public, and that trust must
    be checkable by reading it. Anything that would send data elsewhere — the
    AI tutor included — needs an accepted ADR that changes this rule first.
-   *Mechanism:* every third-party dependency needs an ADR; a CI check that
-   compares the resolved packages with an allowlist arrives with the Xcode
-   project (iteration 001).
+   *Mechanism:* every third-party dependency needs an ADR and a line in
+   `allowed-packages.txt`; CI resolves the packages and fails on any that is
+   not on the list (`scripts/check-packages.sh`).
 2. **No real personal data in the repository.** Fixtures, previews, screenshots,
    issues and pull requests use invented names, schools and timetables —
    never the first user's. *Why:* the repository is public and the first user
@@ -90,6 +90,9 @@ bash scripts/build-and-test.sh
 
 # only the domain package's tests, in seconds
 swift test --package-path SchulplanerKit
+
+# after a build: every resolved package is on allowed-packages.txt
+bash scripts/check-packages.sh
 
 # CI's other checks, as the job `Process` runs them
 bash scripts/check-kit-imports.sh

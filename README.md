@@ -64,8 +64,9 @@ builds the project too.
    git config core.hooksPath .githooks
    ```
 
-   For `scripts/process/`, `gh` and `jq` (`brew install gh jq`), and once
-   `gh auth refresh -s project` for the board.
+   For `scripts/process/` and the package check, `gh` and `jq`
+   (`brew install gh jq`), and once `gh auth refresh -s project` for the
+   board.
 6. **Claude Code**, the way changes are made here: the VS Code extension, or
    the CLI. It loads `CLAUDE.md` and `.claude/rules/process/` from the
    repository. The procedures come from the `ai-dev-process` plugin, from
@@ -112,6 +113,7 @@ an iPhone simulator: ⌘R runs the app, ⌘U runs every test.
 | `SchulplanerKit/` | the domain logic, a local Swift package with its tests |
 | `Config/` | build settings: signing, with the personal part in an ignored local file |
 | `scripts/` | the test command and CI's checks; `scripts/process/` belongs to ai-dev-process |
+| `allowed-packages.txt` | the package dependencies an ADR allows; empty, and CI fails on any other |
 
 ## How it is developed
 
