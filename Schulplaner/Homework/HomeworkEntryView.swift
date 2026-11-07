@@ -2,9 +2,10 @@ import SchulplanerKit
 import SwiftData
 import SwiftUI
 
-/// Writing down homework in a few seconds: a tap on the subject, the note,
-/// save. The due day is already the next school day; quick choices and a date
-/// picker change it. Also the place to edit or delete a piece of homework.
+/// Writing down homework in a few seconds: a tap on the subject, the title,
+/// save. Notes with the details are there for whoever wants them, and shown
+/// only here. The due day is already the next school day; quick choices and a
+/// date picker change it. Also the place to edit or delete a piece of homework.
 struct HomeworkEntryView: View {
     /// The homework being edited; none for new homework.
     let editing: SchoolTask?
@@ -15,10 +16,11 @@ struct HomeworkEntryView: View {
     private var subjects: [Subject]
 
     @State private var subject: Subject?
-    @State private var note: String
+    @State private var title: String
+    @State private var notes: String
     @State private var due: CalendarDay
     @State private var failed = false
-    @FocusState private var noteFocused: Bool
+    @FocusState private var titleFocused: Bool
 
     private let now: Date
 
@@ -26,7 +28,8 @@ struct HomeworkEntryView: View {
         self.editing = editing
         self.now = now
         _subject = State(initialValue: editing?.subject)
-        _note = State(initialValue: editing?.title ?? "")
+        _title = State(initialValue: editing?.title ?? "")
+        _notes = State(initialValue: editing?.notes ?? "")
         _due = State(initialValue: editing?.due ?? DueDay.nextSchoolDay(after: now, in: Homework.calendar))
     }
 
@@ -37,7 +40,7 @@ struct HomeworkEntryView: View {
                     ForEach(subjects) { option in
                         Chip(selected: option === subject, tint: SubjectPalette.color(for: option.colorKey).color) {
                             subject = option
-                            noteFocused = true
+                            titleFocused = true
                         } label: {
                             HStack(spacing: 6) {
                                 SubjectBadge(option, size: 22)
@@ -50,10 +53,15 @@ struct HomeworkEntryView: View {
             }
 
             Section("Was ist auf?") {
-                TextField("z. B. S. 42 Nr. 3", text: $note)
-                    .focused($noteFocused)
+                TextField("z. B. S. 42 Nr. 3", text: $title)
+                    .focused($titleFocused)
                     .submitLabel(.done)
                     .onSubmit(save)
+            }
+
+            Section("Notiz") {
+                TextField("Einzelheiten, wenn nötig", text: $notes, axis: .vertical)
+                    .lineLimit(3...)
             }
 
             Section("Bis wann?") {
@@ -100,7 +108,7 @@ struct HomeworkEntryView: View {
     }
 
     private var canSave: Bool {
-        subject != nil && HomeworkNote.normalized(note) != nil
+        subject != nil && HomeworkText.title(title) != nil
     }
 
     /// The date picker's day, as the calendar day it stands for.
@@ -122,9 +130,9 @@ struct HomeworkEntryView: View {
         guard let subject, canSave else { return }
         attempt {
             if let editing {
-                try homework.update(editing, subject: subject, note: note, due: due)
+                try homework.update(editing, subject: subject, title: title, notes: notes, due: due)
             } else {
-                try homework.add(subject: subject, note: note, due: due, now: now)
+                try homework.add(subject: subject, title: title, notes: notes, due: due, now: now)
             }
         }
     }

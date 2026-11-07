@@ -1,15 +1,22 @@
 import Foundation
 import SwiftData
 
+/// The models of the current schema version. A new version moves these.
+typealias Subject = SchemaV2.Subject
+typealias SchoolTask = SchemaV2.Task
+
 /// Every schema version, oldest first, and how to get from one to the next
-/// (ADR-0003, rule 5). Version 1 has nothing to migrate from yet.
+/// (ADR-0003, rule 5).
 enum SchulplanerMigrationPlan: SchemaMigrationPlan {
     static var schemas: [any VersionedSchema.Type] {
-        [SchemaV1.self]
+        [SchemaV1.self, SchemaV2.self]
     }
 
     static var stages: [MigrationStage] {
-        []
+        [
+            // Version 2 adds Task.notes, with a default: nothing to convert.
+            .lightweight(fromVersion: SchemaV1.self, toVersion: SchemaV2.self),
+        ]
     }
 }
 
@@ -26,7 +33,7 @@ enum Store {
     }
 
     static func container(_ location: Location = .device) throws -> ModelContainer {
-        let schema = Schema(versionedSchema: SchemaV1.self)
+        let schema = Schema(versionedSchema: SchemaV2.self)
         let configuration = switch location {
         case .device:
             ModelConfiguration(schema: schema, cloudKitDatabase: .none)

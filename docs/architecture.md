@@ -101,7 +101,8 @@ erDiagram
   TASK {
     uuid id
     string kind "homework, studySession, other"
-    string title
+    string title "what lists show"
+    string notes "the details, may be empty; from 001"
     string dueDay "YYYY-MM-DD"
     date completedAt "optional"
     date createdAt
@@ -155,7 +156,9 @@ erDiagram
 `CheckIn` (002) stands alone: one per day the student completed the
 check-in. The number in brackets is the iteration that builds the relation;
 an iteration adds only what it uses. Built so far: `Subject` and `Task`, in
-schema version 1 (`Schulplaner/Storage/SchemaV1.swift`).
+schema version 2 (`Schulplaner/Storage/SchemaV2.swift`). Version 2 added a
+task's notes, beside its title; ADR-0004 lists a task's essential attributes,
+and notes are not among those any rule depends on.
 
 Types are those of the stored model; `date` is an instant, and days are
 strings in the format given. Lines are SwiftData relationships — there are

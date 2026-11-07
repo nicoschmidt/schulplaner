@@ -10,8 +10,8 @@ struct Homework {
     let context: ModelContext
 
     enum Problem: Error, Equatable {
-        /// Nothing typed: the note is the one thing required.
-        case emptyNote
+        /// No title: it is the one thing required.
+        case emptyTitle
     }
 
     /// The calendar the rules count days in: Gregorian, as the stored days
@@ -37,18 +37,26 @@ struct Homework {
     }
 
     @discardableResult
-    func add(subject: Subject, note: String, due: CalendarDay, now: Date = .now) throws -> SchoolTask {
-        guard let note = HomeworkNote.normalized(note) else { throw Problem.emptyNote }
-        let task = SchoolTask(kind: TaskKind.homework.rawValue, title: note, dueDay: due.storedValue, subject: subject, createdAt: now)
+    func add(subject: Subject, title: String, notes: String = "", due: CalendarDay, now: Date = .now) throws -> SchoolTask {
+        guard let title = HomeworkText.title(title) else { throw Problem.emptyTitle }
+        let task = SchoolTask(
+            kind: TaskKind.homework.rawValue,
+            title: title,
+            notes: HomeworkText.notes(notes),
+            dueDay: due.storedValue,
+            subject: subject,
+            createdAt: now
+        )
         context.insert(task)
         try context.save()
         return task
     }
 
-    func update(_ task: SchoolTask, subject: Subject, note: String, due: CalendarDay) throws {
-        guard let note = HomeworkNote.normalized(note) else { throw Problem.emptyNote }
+    func update(_ task: SchoolTask, subject: Subject, title: String, notes: String, due: CalendarDay) throws {
+        guard let title = HomeworkText.title(title) else { throw Problem.emptyTitle }
         task.subject = subject
-        task.title = note
+        task.title = title
+        task.notes = HomeworkText.notes(notes)
         task.dueDay = due.storedValue
         try context.save()
     }
