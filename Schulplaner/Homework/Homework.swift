@@ -61,6 +61,19 @@ struct Homework {
         try context.save()
     }
 
+    /// Ticks homework off: records when it was done, for the timeline (004)
+    /// and the rewards (005) to build on.
+    func complete(_ task: SchoolTask, at now: Date = .now) throws {
+        task.completedAt = now
+        try context.save()
+    }
+
+    /// Ticks homework back to open, as undo or from the done section.
+    func reopen(_ task: SchoolTask) throws {
+        task.completedAt = nil
+        try context.save()
+    }
+
     func delete(_ task: SchoolTask) throws {
         context.delete(task)
         try context.save()

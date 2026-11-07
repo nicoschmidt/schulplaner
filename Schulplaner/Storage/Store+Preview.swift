@@ -19,6 +19,7 @@ extension Store {
         let homework = Homework(context: container.mainContext)
         let today = CalendarDay(.now, in: Homework.calendar)
         for (subject, title, notes, days) in [
+            (4, "Text für die Probe lernen", "", -1),
             (1, "Arbeitsblatt Brüche", "", 1),
             (0, "Gedicht auswendig lernen", "Die ersten drei Strophen.\nVortrag am Anfang der Stunde.", 2),
             (2, "Vokabeln Unit 3", "", 2),
@@ -27,6 +28,8 @@ extension Store {
         ] {
             try! homework.add(subject: subjects[subject], title: title, notes: notes, due: today.adding(days: days))
         }
+        let done = try! homework.add(subject: subjects[0], title: "Lesetagebuch", due: today, now: .now.addingTimeInterval(-86_400))
+        try! homework.complete(done, at: .now.addingTimeInterval(-3_600))
         return container
     }()
 }
