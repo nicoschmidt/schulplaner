@@ -32,13 +32,21 @@ public enum DueDay {
     }
 }
 
-/// The note of a piece of homework: what the student types, such as
-/// "S. 42 Nr. 3". It is the one thing to type, so it is the one thing required.
-public enum HomeworkNote {
-    /// The note to store, trimmed of the spaces and lines around it; nil when
+/// What the student types for a piece of homework: a title, such as
+/// "S. 42 Nr. 3", which lists show, and notes with the details, which only the
+/// homework itself shows. The title is the one thing to type, so it is the one
+/// thing required.
+public enum HomeworkText {
+    /// The title to store, trimmed of the spaces and lines around it; nil when
     /// nothing is left.
-    public static func normalized(_ typed: String) -> String? {
-        let note = typed.trimmingCharacters(in: .whitespacesAndNewlines)
-        return note.isEmpty ? nil : note
+    public static func title(_ typed: String) -> String? {
+        let title = typed.trimmingCharacters(in: .whitespacesAndNewlines)
+        return title.isEmpty ? nil : title
+    }
+
+    /// The notes to store: as typed, lines and all, without the space and
+    /// empty lines around them. Empty when there are none.
+    public static func notes(_ typed: String) -> String {
+        typed.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }

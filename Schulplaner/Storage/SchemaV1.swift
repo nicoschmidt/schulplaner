@@ -1,7 +1,8 @@
 import Foundation
 import SwiftData
 
-/// The first stored schema: what iteration 001 stores (ADR-0004, rule 5).
+/// The first stored schema: subjects and tasks, as #10 shipped them. Kept as
+/// it was, so that a store of this version can be migrated (`SchemaV2`).
 ///
 /// Ready for iCloud sync from the start (ADR-0003, rules 1 and 2): no unique
 /// attributes, every property optional or with a default, every relationship
@@ -64,6 +65,3 @@ enum SchemaV1: VersionedSchema {
     }
 }
 
-/// The models of the current schema version. A new version moves these.
-typealias Subject = SchemaV1.Subject
-typealias SchoolTask = SchemaV1.Task

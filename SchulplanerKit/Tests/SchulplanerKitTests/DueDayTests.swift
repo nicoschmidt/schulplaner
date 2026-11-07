@@ -36,13 +36,22 @@ struct DueDayTests {
     }
 }
 
-struct HomeworkNoteTests {
-    @Test func theNoteIsStoredWithoutTheSpaceAroundIt() {
-        #expect(HomeworkNote.normalized("  S. 42 Nr. 3 \n") == "S. 42 Nr. 3")
+struct HomeworkTextTests {
+    @Test func theTitleIsStoredWithoutTheSpaceAroundIt() {
+        #expect(HomeworkText.title("  S. 42 Nr. 3 \n") == "S. 42 Nr. 3")
     }
 
     @Test(arguments: ["", "   ", "\n"])
-    func anEmptyNoteIsNone(_ typed: String) {
-        #expect(HomeworkNote.normalized(typed) == nil)
+    func anEmptyTitleIsNone(_ typed: String) {
+        #expect(HomeworkText.title(typed) == nil)
+    }
+
+    @Test func notesKeepTheirLinesButNotTheSpaceAroundThem() {
+        let typed = "\n  Nr. 3a und 3b\n\nNr. 4 nur die geraden  \n\n"
+        #expect(HomeworkText.notes(typed) == "Nr. 3a und 3b\n\nNr. 4 nur die geraden")
+    }
+
+    @Test func notesMayBeEmpty() {
+        #expect(HomeworkText.notes("  \n ") == "")
     }
 }

@@ -6,10 +6,35 @@ import Testing
 /// Storage as ADR-0003 sets it up.
 @MainActor
 struct StoreTests {
-    @Test func theStoreIsSchemaVersionOne() throws {
+    @Test func theStoreIsTheNewestSchemaVersion() throws {
         let container = try Store.container(.memory)
-        #expect(container.schema.version == Schema.Version(1, 0, 0))
+        #expect(container.schema.version == Schema.Version(2, 0, 0))
         #expect(Set(container.schema.entities.map(\.name)) == ["Subject", "Task"])
+    }
+
+    @Test func aStoreOfVersionOneMigratesWithoutLoss() throws {
+        let url = temporaryStoreURL()
+        defer { try? FileManager.default.removeItem(at: url.deletingLastPathComponent()) }
+
+        // A store as #10 wrote it: version 1, opened without the plan.
+        do {
+            let schema = Schema(versionedSchema: SchemaV1.self)
+            let old = try ModelContainer(
+                for: schema,
+                configurations: ModelConfiguration(schema: schema, url: url, cloudKitDatabase: .none)
+            )
+            let subject = SchemaV1.Subject(name: "Mathematik", colorKey: "blue", symbolName: "function", sortIndex: 0)
+            old.mainContext.insert(subject)
+            old.mainContext.insert(SchemaV1.Task(kind: "homework", title: "S. 42 Nr. 3", dueDay: "2026-11-16", subject: subject))
+            try old.mainContext.save()
+        }
+
+        let migrated = try Store.container(.file(url))
+        let task = try #require(try Homework(context: migrated.mainContext).all().first)
+        #expect(task.title == "S. 42 Nr. 3")
+        #expect(task.notes == "")
+        #expect(task.dueDay == "2026-11-16")
+        #expect(task.subject?.name == "Mathematik")
     }
 
     @Test func iCloudSyncIsOff() throws {

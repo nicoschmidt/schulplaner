@@ -28,46 +28,57 @@ struct HomeworkTests {
 
     @Test func homeworkIsStoredAsATaskOfKindHomework() throws {
         let now = Date(timeIntervalSince1970: 1_794_000_000)
-        try homework.add(subject: math, note: "  S. 42 Nr. 3 ", due: day("2026-11-16"), now: now)
+        try homework.add(subject: math, title: "  S. 42 Nr. 3 ", due: day("2026-11-16"), now: now)
 
         let task = try #require(try homework.all().first)
         #expect(task.kind == "homework")
         #expect(task.title == "S. 42 Nr. 3")
+        #expect(task.notes == "")
         #expect(task.dueDay == "2026-11-16")
         #expect(task.subject === math)
         #expect(task.createdAt == now)
         #expect(task.completedAt == nil)
     }
 
-    @Test func aNoteOfNothingIsNotSaved() throws {
-        #expect(throws: Homework.Problem.emptyNote) {
-            try homework.add(subject: math, note: " ", due: day("2026-11-16"))
+    @Test func notesAreStoredWithTheirLines() throws {
+        let task = try homework.add(
+            subject: german,
+            title: "Gedicht",
+            notes: "\nStrophe 1 bis 3\nVortrag in der ersten Stunde \n",
+            due: day("2026-11-16")
+        )
+        #expect(task.notes == "Strophe 1 bis 3\nVortrag in der ersten Stunde")
+    }
+
+    @Test func aTitleOfNothingIsNotSaved() throws {
+        #expect(throws: Homework.Problem.emptyTitle) {
+            try homework.add(subject: math, title: " ", due: day("2026-11-16"))
         }
         #expect(try homework.all().isEmpty)
     }
 
     @Test func homeworkIsListedSoonestDueFirstThenInTheOrderWrittenDown() throws {
         let start = Date(timeIntervalSince1970: 1_794_000_000)
-        try homework.add(subject: math, note: "Später", due: day("2026-12-01"), now: start)
-        try homework.add(subject: german, note: "Zuerst eingetragen", due: day("2026-11-16"), now: start)
-        try homework.add(subject: math, note: "Danach eingetragen", due: day("2026-11-16"), now: start + 60)
+        try homework.add(subject: math, title: "Später", due: day("2026-12-01"), now: start)
+        try homework.add(subject: german, title: "Zuerst eingetragen", due: day("2026-11-16"), now: start)
+        try homework.add(subject: math, title: "Danach eingetragen", due: day("2026-11-16"), now: start + 60)
 
         #expect(try homework.all().map(\.title) == ["Zuerst eingetragen", "Danach eingetragen", "Später"])
     }
 
     @Test func homeworkIsEdited() throws {
-        let task = try homework.add(subject: math, note: "Arbeitsblatt", due: day("2026-11-16"))
-        try homework.update(task, subject: german, note: "Gedicht lernen", due: day("2026-11-18"))
-        #expect((task.subject === german, task.title, task.dueDay) == (true, "Gedicht lernen", "2026-11-18"))
+        let task = try homework.add(subject: math, title: "Arbeitsblatt", due: day("2026-11-16"))
+        try homework.update(task, subject: german, title: "Gedicht lernen", notes: "Strophe 1 bis 3", due: day("2026-11-18"))
+        #expect((task.subject === german, task.title, task.notes, task.dueDay) == (true, "Gedicht lernen", "Strophe 1 bis 3", "2026-11-18"))
 
-        #expect(throws: Homework.Problem.emptyNote) {
-            try homework.update(task, subject: german, note: "", due: day("2026-11-18"))
+        #expect(throws: Homework.Problem.emptyTitle) {
+            try homework.update(task, subject: german, title: "", notes: "", due: day("2026-11-18"))
         }
         #expect(task.title == "Gedicht lernen")
     }
 
     @Test func homeworkIsDeletedAndItsSubjectStays() throws {
-        let task = try homework.add(subject: math, note: "Arbeitsblatt", due: day("2026-11-16"))
+        let task = try homework.add(subject: math, title: "Arbeitsblatt", due: day("2026-11-16"))
         try homework.delete(task)
         #expect(try homework.all().isEmpty)
         #expect(try Subjects(context: container.mainContext).all().count == 2)
@@ -80,16 +91,16 @@ struct HomeworkTests {
     }
 
     @Test func theQuestionBeforeDeletingASubjectCountsItsHomework() throws {
-        try homework.add(subject: math, note: "S. 42", due: day("2026-11-16"))
-        try homework.add(subject: math, note: "S. 43", due: day("2026-11-17"))
-        try homework.add(subject: german, note: "Lesen", due: day("2026-11-17"))
+        try homework.add(subject: math, title: "S. 42", due: day("2026-11-16"))
+        try homework.add(subject: math, title: "S. 43", due: day("2026-11-17"))
+        try homework.add(subject: german, title: "Lesen", due: day("2026-11-17"))
 
         let deletion = Subjects(context: container.mainContext).deletion(of: math)
         #expect(deletion.homeworkCount == 2)
     }
 
     @Test func aStoredDueDayIsReadAsACalendarDay() throws {
-        let task = try homework.add(subject: math, note: "S. 42", due: day("2026-11-16"))
+        let task = try homework.add(subject: math, title: "S. 42", due: day("2026-11-16"))
         #expect(task.due == day("2026-11-16"))
         task.dueDay = "Montag"
         #expect(task.due == nil)
