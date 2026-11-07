@@ -85,7 +85,7 @@ struct SubjectPickerView: View {
         .toolbar {
             if purpose == .addMore {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Abbrechen") { dismiss() }
+                    CancelButton { dismiss() }
                 }
             }
         }
